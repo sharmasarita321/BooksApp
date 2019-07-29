@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MVCBookAssignment.Models.Book>
+@{
+    ViewBag.Title = "About";
+}
+<h2> </h2>
+<h3> </h3>
+
+<h2>BookList</h2>
+
+@Html.ActionLink("Create New", "CreateNew", new { @class ="btn btn-primary"})
+
+<table id="books table table-bordered table-striped table-hover">
+                
+
+    @foreach (var i in Model)
+    {
+    <tr>
+
+        <td>@Html.ActionLink(i.BookName, "Details", new { i.Id })</td>
+        
+        <td>@Html.ActionLink("DELETE", "Delete", i, new { @class = "btn btn-danger" })
+        @*@Html.ActionLink("DETAILS", "Details", i, new {@class="btn btn-primary"})*@ 
+         @Html.ActionLink("EDIT", "Edit",i,new { @class = "btn btn-success"})
+       @*<button data-book-id ="@i.Id" type="button" class="btn btn-danger ">DELETE</button>*@
+
+    </tr>
+        
+    }
+</table> 
+
+@section scripts{
+<script>
+
+    $(document).ready( function () {
+
+        $('#books  .jq-delete').on('click', function () {
+            var button =$(this)
+            if (confirm('Are you sure you want to delete this book')) 
+            {
+                $.ajax({
+
+                    url: '/api/book/' + $(this).attr('data-book-id'),
+                    method: 'DELETE',
+                        success: function () {
+                            button.parents('tr').remove()
+                            console.log('success')
+                        }
+                })
+                
+            }
+        })
+    })
+</script>
+ }
+
+
+
+
+

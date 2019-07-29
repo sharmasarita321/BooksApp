@@ -1,0 +1,34 @@
+﻿@model MVCBookAssignment.Models.Book
+@{
+    ViewBag.Title = "CreateNew";
+}
+
+<h2>CreateNew</h2>
+
+@using (Html.BeginForm("CreateNew", "Home"))
+{
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.BookName);
+        @Html.TextBoxFor(m => m.BookName, new { @class = "form-control" });
+                   
+    </div>
+
+    @Html.HiddenFor(m => m.Id);
+
+    <button class="btn btn-primary small" type="submit" >Create</button>
+    @Html.ActionLink("Back To List","About",new { @class="btn btn-success small"})
+}
+@*@Html.AntiForgeryToken()*@
+
+@*@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+
+
+
+
+
+
+

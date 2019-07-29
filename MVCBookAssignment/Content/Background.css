@@ -1,0 +1,10 @@
+﻿body {
+    background-image: url('../Images/kees-streefkerk-Adl90-aXYwA-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover
+}
+.btn btn-success{
+    padding:10px;
+    resize:10px;
+
+}
